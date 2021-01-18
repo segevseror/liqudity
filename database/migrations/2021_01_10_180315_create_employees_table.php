@@ -16,6 +16,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->unsignedBigInteger('company');
             $table->id();
+            $table->string('valid');
             $table->timestamps();
             $table->string('fname')->require();
             $table->string('lname')->require();

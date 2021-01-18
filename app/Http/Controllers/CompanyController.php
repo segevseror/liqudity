@@ -44,15 +44,17 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-
-
-        $path = $request->file('logoImg')->store('public/logos');
+        $request->flash();
         $this->validate($request, [
             'comapnyName' => 'required',
-            'email' => 'required',
-            'website' => 'required'
+            'email' => 'required|email:rfc,dns',
+            'website' => 'required',
+            'logo' => 'image'
         ]);
-
+        $path = '';
+        if($request->file('logoImg')){
+            $path = $request->file('logoImg')->store('public/logos');
+        }
         DB::table('companies')->insert(
             [
                 'valid' => 1,
@@ -79,10 +81,9 @@ class CompanyController extends Controller
             ->first();
         $employees = DB::table('employees')
             ->where('company', '=', $id)
+            ->where('valid', '=', 1)
             ->orderBy('id', 'desc')
             ->get();
-        // var_dump();
-        // die();
         return view('company', ['company' => $company, 'employees' => $employees, 'id' => $id]);
     }
 

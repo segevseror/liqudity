@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,13 +22,16 @@ class DatabaseSeeder extends Seeder
         $company = DB::table('companies')->insert([
             'name' => 'One company',
             'email' => 'One@company.com',
-            'logo' => 'logo/sss',
+            'logo' => '',
             'website' => 'www.one.com',
+            'valid' => '1',
+            'created_at' => new \DateTime(),
         ]);
 
         DB::table('employees')->insert([
-            'First Name' => 'segev',
-            'Last Name' => 'seror',
+            'fname' => 'segev',
+            'lname' => 'seror',
+            'valid' => '1',
             'email' => 'vman120@gmail.com',
             'phone' => '0546465625',
             'company' => '1',

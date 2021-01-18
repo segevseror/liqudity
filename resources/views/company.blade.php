@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(!empty($employees))
+                                @if($employees->count())
                                 @foreach( $employees as $user )
                                 <tr>
                                     <td>{{$user->fname}}</td>
@@ -38,12 +38,16 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->phone}}</td>
                                     <td>
-                                        <a href="/delete/{{$company->id}}" class="btn btn-danger">del</a>
+                                        <a href="/employees/{{$user->id}}/delete" class="btn btn-danger">del</a>
                                     </td>
                                 </tr>
                                 @endforeach
                                 @else
-                                <div>no have employees</div>
+                                <tr>
+                                    <td colspan="5" class="text-center alert alert-warning">
+                                        <b>no found employees</b>
+                                    </td>
+                                </tr>
                                 @endif
                             </tbody>
                         </table>

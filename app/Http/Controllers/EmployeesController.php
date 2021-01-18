@@ -117,6 +117,10 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('employees')
+            ->where('id', $id)
+            ->update(['valid' => '0']);
+
+        return redirect()->route('company', ['id' => $id]);
     }
 }

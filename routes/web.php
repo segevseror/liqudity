@@ -17,16 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['logged'])->group(function () {
 
     Route::get('/', 'CompanyController@index')->name('home');
-    Route::get('companies/create', 'CompanyController@create');
+    Route::get('companies/create', 'CompanyController@create')->name('createCompanies');
     Route::get('companies/{id}/update', 'CompanyController@edit');
     Route::get('companies/{id}/delete', 'CompanyController@destroy');
     Route::get('companies/{id}', 'CompanyController@show')->name('company');
-
     Route::post('companies/create', 'CompanyController@store');
     Route::post('companies/{id}/update', 'CompanyController@update');
-    Route::get('/employees/{id}/create', 'EmployeesController@create')->name('createEmployees');
-
-    Route::post('/employees/{id}/create', 'EmployeesController@store');
+    
+    Route::get('employees/{id}/create', 'EmployeesController@create')->name('createEmployees');
+    Route::get('employees/{id}/delete', 'EmployeesController@destroy');
+    Route::post('employees/{id}/create', 'EmployeesController@store');
 });
 
 

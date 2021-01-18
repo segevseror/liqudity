@@ -24,6 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($companies->count())
                                 @foreach( $companies as $company )
                                 <tr>
                                     <td class="text-center"><img src="{{ Storage::url($company->logo) }}" class="img-fluid" width="50px"></td>
@@ -37,6 +38,13 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="5" class="text-center alert alert-warning">
+                                        <b>no found companies</b>
+                                    </td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

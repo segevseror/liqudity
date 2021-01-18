@@ -10,16 +10,16 @@
         <form action="/employees/{{$id}}/create" method="POST">
             @csrf
             <div class="form-group">
-                <input type="text" class="form-control @error('fname') is-invalid @enderror" name="fname" placeholder="First Name">
+                <input type="text" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" placeholder="First Name">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" placeholder="Lest Name">
+                <input type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}" placeholder="Lest Name">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email">
+                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Phone">
+                <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Phone">
             </div>
             <!-- <div class="form-group ">
                 <label for="exampleFormControlSelect1">Companies</label>

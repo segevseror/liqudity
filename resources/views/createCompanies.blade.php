@@ -25,8 +25,8 @@
                         <input type="file" class="form-control-file" name="logoImg">
                     </div>
                     <div class="col-6">
-                    <img src="{{ Storage::url($company->logo) }}" class="img-fluid" width="50px">
-                    <a href="delete">delete</a>
+                        <img src="{{ Storage::url($company->logo) }}" class="img-fluid" width="50px">
+                        <a href="delete">delete</a>
                     </div>
                 </div>
             </div>
@@ -37,13 +37,13 @@
         <form action="/companies/create" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <input type="text" class="form-control @error('comapnyName') is-invalid @enderror" name="comapnyName" placeholder="Comapny Name">
+                <input type="text" class="form-control @error('comapnyName') is-invalid @enderror" name="comapnyName" value="{{ old('comapnyName') }}" placeholder="Comapny Name">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email">
+                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control @error('website') is-invalid @enderror" name="website" placeholder="Website">
+                <input type="text" class="form-control @error('website') is-invalid @enderror" name="website" value="{{ old('website') }}" placeholder="Website">
             </div>
             <div class="form-group">
                 <label for="logoImg">Upload Logo</label>
@@ -52,6 +52,15 @@
             <button type="submit" class="btn btn-outline-success">Create</button>
             <a href="/" class="btn btn-outline-danger">Cancle</a>
         </form>
+        @endif
+        @if ($errors->any())
+        <div class="alert alert-danger mt-3">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
 
 
